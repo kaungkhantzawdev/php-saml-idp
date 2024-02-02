@@ -4,7 +4,7 @@ class IdpProvider {
 
   // Defining some trusted Service Providers.
   private $trusted_sps = [
-    'urn:service:provider:id' => 'https://service-provider.com/login/callback'
+    'urn:service:provider:id' => 'https://accounts.zohoportal.com/accounts/csamlresponse/10072513335'
   ];
 
   /**
@@ -25,7 +25,7 @@ class IdpProvider {
    * @return string
    */
   public function getIdPId(){
-    return "https://www.idp.com";
+    return "https://dev-test.awardregister.com";
   }
 
   /**
