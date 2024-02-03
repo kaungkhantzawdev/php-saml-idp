@@ -1,4 +1,5 @@
 <?php
+use RobRichards\XMLSecLibs\XMLSecurityKey;
 
 class IdpProvider {
 
@@ -43,7 +44,12 @@ class IdpProvider {
    * @return \RobRichards\XMLSecLibs\XMLSecurityKey
    */
   public function getPrivateKey(){
-    return \LightSaml\Credential\KeyHelper::createPrivateKey('cert/saml.key', '', true);
+
+  $privateKeyPath = 'cert/saml.pem';
+  $privateKey = new XMLSecurityKey(XMLSecurityKey::RSA_SHA256, ['type' => 'private']);
+  $privateKey->loadKey($privateKeyPath, true, true);
+
+    return \LightSaml\Credential\KeyHelper::createPrivateKey($privateKey, '', true);
   }
 
   /**
