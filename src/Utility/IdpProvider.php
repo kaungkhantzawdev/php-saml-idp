@@ -25,7 +25,7 @@ class IdpProvider {
    * @return string
    */
   public function getIdPId(){
-    return "https://dev-test.awardregister.com";
+    return "https://dev-test.awardregister.com/metadata.php";
   }
 
   /**
@@ -34,7 +34,7 @@ class IdpProvider {
    * @return \LightSaml\Credential\X509Certificate
    */
   public function getCertificate(){
-    return \LightSaml\Credential\X509Certificate::fromFile('cert/saml_test_certificate.crt');
+    return \LightSaml\Credential\X509Certificate::fromFile('/etc/letsencrypt/live/dev-test.awardregister.com/saml.crt');
   }
 
   /**
@@ -43,7 +43,7 @@ class IdpProvider {
    * @return \RobRichards\XMLSecLibs\XMLSecurityKey
    */
   public function getPrivateKey(){
-    return \LightSaml\Credential\KeyHelper::createPrivateKey('cert/saml_test_certificate.key', '', true);
+    return \LightSaml\Credential\KeyHelper::createPrivateKey('/etc/letsencrypt/live/dev-test.awardregister.com/saml.key', '', true);
   }
 
   /**

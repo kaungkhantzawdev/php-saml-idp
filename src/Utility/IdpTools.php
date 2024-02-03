@@ -47,6 +47,7 @@ class IdpTools{
 
       // We now start constructing the SAML Response using LightSAML.
       $response = new \LightSaml\Model\Protocol\Response();
+      $response->setRelayState('aHR0cHM6Ly9yaW9tYWMuem9ob2Rlc2suY29tL3BvcnRhbC8=');
       $response
           ->addAssertion($assertion = new \LightSaml\Model\Assertion\Assertion())
           ->setStatus(new \LightSaml\Model\Protocol\Status(
@@ -92,7 +93,7 @@ class IdpTools{
                   ->setNotOnOrAfter(new \DateTime('+1 MINUTE'))
                   ->addItem(
                       // Use the Service Provider Entity ID as AudienceRestriction.
-                      new \LightSaml\Model\Assertion\AudienceRestriction([$issuer])
+                      new \LightSaml\Model\Assertion\AudienceRestriction('riomac.zohodesk.com')
                   )
           )
           ->addItem(
