@@ -93,7 +93,7 @@ class IdpTools{
                   ->setNotOnOrAfter(new \DateTime('+1 MINUTE'))
                   ->addItem(
                       // Use the Service Provider Entity ID as AudienceRestriction.
-                      new \LightSaml\Model\Assertion\AudienceRestriction('riomac.zohodesk.com')
+                      new \LightSaml\Model\Assertion\AudienceRestriction(['riomac.zohodesk.com'])
                   )
           )
           ->addItem(
