@@ -148,7 +148,7 @@ class IdpTools{
 	        ->setIssuer(new \LightSaml\Model\Assertion\Issuer($issuer))
 	        ->setStatus(new \LightSaml\Model\Protocol\Status(new \LightSaml\Model\Protocol\StatusCode('urn:oasis:names:tc:SAML:2.0:status:Success')))
 	        ->setSignature(new \LightSaml\Model\XmlDSig\SignatureWriter($certificate, $privateKey));
-
+      var_dump($response);
 	   
 	    $assertion
 	        ->setId(\LightSaml\Helper::generateID())
@@ -157,7 +157,7 @@ class IdpTools{
 	        ->setSubject(
 	                (new \LightSaml\Model\Assertion\Subject())
 	                    ->setNameID(new \LightSaml\Model\Assertion\NameID(
-	                        $authuser_info["email"],
+	                        $user_id,
 	                        \LightSaml\SamlConstants::NAME_ID_FORMAT_EMAIL
 	                    ))
 	                ->addSubjectConfirmation(
@@ -165,9 +165,9 @@ class IdpTools{
 	                       ->setMethod(\LightSaml\SamlConstants::CONFIRMATION_METHOD_BEARER)
 	                       ->setSubjectConfirmationData(
 	                                (new \LightSaml\Model\Assertion\SubjectConfirmationData())
-	                               ->setInResponseTo($authnRequest->getId())
+	                               ->setInResponseTo($id)
 	                               ->setNotOnOrAfter(new \DateTime('+1 MINUTE'))
-	                               ->setRecipient($authnRequest->getAssertionConsumerServiceURL())
+	                               ->setRecipient($relaystate)
 	                            )
 	                    )
 	            )
@@ -183,11 +183,11 @@ class IdpTools{
 	                (new \LightSaml\Model\Assertion\AttributeStatement())
 	                ->addAttribute(new \LightSaml\Model\Assertion\Attribute(
 	                        \LightSaml\ClaimTypes::EMAIL_ADDRESS,
-	                        $authuser_info["email"]
+	                        $user_email
 	                    ))
 	                ->addAttribute(new \LightSaml\Model\Assertion\Attribute(
 	                        \LightSaml\ClaimTypes::COMMON_NAME,
-	                        $authuser_info["firstname"]
+	                        $user_id
 	                    ))
 	            )
 	        ->addItem(
