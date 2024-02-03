@@ -53,7 +53,7 @@ class IdpProvider {
    */
   public function getUserEmail(){
 
-    return "duarte.garin@samltuts.com";
+    return "kaungkhantzaw235@gmail.com";
   }
 
 }
