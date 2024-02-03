@@ -16,7 +16,7 @@ class IdpProvider {
    *   The Assertion Consumer Service Url.
    */
   public function getServiceProviderAcs($entityId){
-    return $this->trusted_sps[$entityId];
+    return 'https://accounts.zohoportal.com/accounts/csamlresponse/10072513335';
   }
 
   /**
