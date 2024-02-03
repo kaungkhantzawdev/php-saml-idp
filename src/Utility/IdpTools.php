@@ -95,7 +95,7 @@ class IdpTools{
                   ->setNotOnOrAfter(new \DateTime('+1 MINUTE'))
                   ->addItem(
                       // Use the Service Provider Entity ID as AudienceRestriction.
-                      new \LightSaml\Model\Assertion\AudienceRestriction(['desk.zoho.com', ''])
+                      new \LightSaml\Model\Assertion\AudienceRestriction([$issuer])
                   )
           )
           ->addItem(
@@ -119,13 +119,12 @@ class IdpTools{
 
     // Sign the response.
     $response->setSignature(new \LightSaml\Model\XmlDSig\SignatureWriter($idpProvider->getCertificate(), $idpProvider->getPrivateKey()));
-
+    print_r($response);
     // Serialize to XML.
     $response->serialize($serializationContext->getDocument(), $serializationContext);
 
     // Set the postback url obtained from the trusted SPs as the destination.
     $response->setDestination($acsUrl);
-    var_dump($response); die();
     return $response;
   }
 }
