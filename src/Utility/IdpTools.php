@@ -45,8 +45,6 @@ class IdpTools{
     // Preparing the response XML
       $serializationContext = new \LightSaml\Model\Context\SerializationContext();
       echo "start <br>";
-      print $idpProvider->getCertificate();
-      print $idpProvider->getPrivateKey();
 
       // We now start constructing the SAML Response using LightSAML.
       $response = new \LightSaml\Model\Protocol\Response();
@@ -120,12 +118,12 @@ class IdpTools{
 
     // Sign the response.
     $response->setSignature(new \LightSaml\Model\XmlDSig\SignatureWriter($idpProvider->getCertificate(), $idpProvider->getPrivateKey()));
-    print_r($response);
     // Serialize to XML.
     $response->serialize($serializationContext->getDocument(), $serializationContext);
 
     // Set the postback url obtained from the trusted SPs as the destination.
     $response->setDestination($acsUrl);
+    var_dump($response);
     return $response;
 
   }
