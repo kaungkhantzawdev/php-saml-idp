@@ -68,11 +68,10 @@ class IdpTools{
           ->setIssuer(new \LightSaml\Model\Assertion\Issuer($idpProvider->getIdPId()))
           ->setSubject(
               (new \LightSaml\Model\Assertion\Subject())
-                  // Here we set the NameID that identifies the name of the user.
-                  ->setNameID(new \LightSaml\Model\Assertion\NameID(
-                    $user_id,
-                      \LightSaml\SamlConstants::NAME_ID_FORMAT_UNSPECIFIED
-                  ))
+              ->setNameID(new \LightSaml\Model\Assertion\NameID(
+                  $user_email,
+                  \LightSaml\SamlConstants::NAME_ID_FORMAT_EMAIL
+              ))
                   ->addSubjectConfirmation(
                       (new \LightSaml\Model\Assertion\SubjectConfirmation())
                           ->setMethod(\LightSaml\SamlConstants::CONFIRMATION_METHOD_BEARER)

@@ -11,12 +11,8 @@ $request = \Symfony\Component\HttpFoundation\Request::createFromGlobals();
 
 <form action="post-saml.php">
     <div>
-        <label>Username:</label>
-        <input name="username" type="text">
-    </div>
-    <div>
-        <label>Pass:</label>
-        <input type="password" name="password">
+        <label>Email:</label>
+        <input name="user_email" type="email">
     </div>
     <input type="submit">
     <input type="hidden" name="SAMLRequest"

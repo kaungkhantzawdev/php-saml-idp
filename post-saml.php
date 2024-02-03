@@ -21,8 +21,8 @@ $issuer = $saml_request->getMessage()->getIssuer()->getValue();
 $id = $saml_request->getMessage()->getID();
 
 // Simulate user information from IdP
-$user_id = $request->get("username");
-$user_email = $idpProvider->getUserEmail();
+$user_id = "spec-id-1001";
+$user_email = $request->get("user_email");
 
 // Construct a SAML Response.
 $response = $idpTools->createSAMLResponse($idpProvider, $user_id, $user_email, $issuer, $id);
