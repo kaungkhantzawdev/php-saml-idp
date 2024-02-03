@@ -96,12 +96,15 @@ class IdpTools{
                   )
           )
           ->addItem(
-              (new \LightSaml\Model\Assertion\AttributeStatement())
-                  ->addAttribute(new \LightSaml\Model\Assertion\Attribute(
-                      \LightSaml\ClaimTypes::EMAIL_ADDRESS,
-                    // Setting the user email address.
-                    "kaungkhantzaw@gmail.com"
-                  ))
+            (new \LightSaml\Model\Assertion\AttributeStatement())
+                ->addAttribute(new \LightSaml\Model\Assertion\Attribute(
+                    \LightSaml\ClaimTypes::EMAIL_ADDRESS,
+                    $user_email
+                ))
+                ->addAttribute(new \LightSaml\Model\Assertion\Attribute(
+                    \LightSaml\ClaimTypes::COMMON_NAME,
+                    'x123'
+                ))
           )
           ->addItem(
               (new \LightSaml\Model\Assertion\AuthnStatement())
