@@ -1,3 +1,12 @@
+<?php
+
+include "inc.php";
+
+// Reading the HTTP Request
+$request = \Symfony\Component\HttpFoundation\Request::createFromGlobals();
+
+?>
+
 <h1>IdP Login Page</h1>
 
 <form action="post-saml.php">
@@ -11,7 +20,7 @@
     </div>
     <input type="submit">
     <input type="hidden" name="SAMLRequest"
-           value="<?php include 'metadata.php'; ?>">
+           value="<?php print $request->get("SAMLRequest") ?>">
     <input type="hidden" name="RelayState"
-           value="aHR0cHM6Ly9yaW9tYWMuem9ob2Rlc2suY29tL3BvcnRhbC8=">
+           value="<?php print $request->get("RelayState") ?>">
 </form>
