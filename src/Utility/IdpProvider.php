@@ -35,7 +35,7 @@ class IdpProvider {
    * @return \LightSaml\Credential\X509Certificate
    */
   public function getCertificate(){
-    return \LightSaml\Credential\X509Certificate::fromFile('cert/saml.crt');
+    return \LightSaml\Credential\X509Certificate::fromFile('cert/samlidp/cert.pem');
   }
 
   /**
@@ -44,7 +44,7 @@ class IdpProvider {
    * @return \RobRichards\XMLSecLibs\XMLSecurityKey
    */
   public function getPrivateKey(){
-    return \LightSaml\Credential\KeyHelper::createPrivateKey('cert/saml.key', '', true);
+    return \LightSaml\Credential\KeyHelper::createPrivateKey('cert/samlidp/key.pem', '', true);
   }
 
   /**
