@@ -44,12 +44,7 @@ class IdpProvider {
    * @return \RobRichards\XMLSecLibs\XMLSecurityKey
    */
   public function getPrivateKey(){
-
-  $privateKeyPath = 'cert/saml.pem';
-  $privateKey = new XMLSecurityKey(XMLSecurityKey::RSA_SHA256, ['type' => 'private']);
-  $privateKey->loadKey($privateKeyPath, true, true);
-
-    return \LightSaml\Credential\KeyHelper::createPrivateKey($privateKey, '', true);
+    return \LightSaml\Credential\KeyHelper::createPrivateKey('cert/saml.key', '', true);
   }
 
   /**
