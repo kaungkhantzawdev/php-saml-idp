@@ -47,7 +47,7 @@ class IdpTools{
 
       // We now start constructing the SAML Response using LightSAML.
       $response = new \LightSaml\Model\Protocol\Response();
-      $response->setRelayState('aHR0cHM6Ly9yaW9tYWMuem9ob2Rlc2suY29tL3BvcnRhbC8=');
+      // $response->setRelayState('aHR0cHM6Ly9yaW9tYWMuem9ob2Rlc2suY29tL3BvcnRhbC8=');
       $response
           ->addAssertion($assertion = new \LightSaml\Model\Assertion\Assertion())
           ->setStatus(new \LightSaml\Model\Protocol\Status(
