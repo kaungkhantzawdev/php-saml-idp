@@ -24,3 +24,6 @@ $request = \Symfony\Component\HttpFoundation\Request::createFromGlobals();
     <input type="hidden" name="RelayState"
            value="<?php print $request->get("RelayState") ?>">
 </form>
+<?php print $request->get("SAMLRequest") ?>
+<br> <br>
+<?php print $request->get("RelayState") ?>
