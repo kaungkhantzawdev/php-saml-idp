@@ -100,7 +100,7 @@ class IdpTools{
                   ->addAttribute(new \LightSaml\Model\Assertion\Attribute(
                       \LightSaml\ClaimTypes::EMAIL_ADDRESS,
                     // Setting the user email address.
-                    $user_email
+                    "kaungkhantzaw@gmail.com"
                   ))
           )
           ->addItem(
