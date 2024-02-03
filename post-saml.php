@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 include "inc.php";
 include "src/Utility/IdpProvider.php";
@@ -36,7 +38,12 @@ $message = $messageContext->getMessage();
 $message->setRelayState($request->get('RelayState'));
 $messageContext->setMessage($message);
 
-// Return the Response.
-/** @var \Symfony\Component\HttpFoundation\Response $httpResponse */
-$httpResponse = $postBinding->send($messageContext);
-print $httpResponse->getContent();
+try {
+    // Return the Response.
+    /** @var \Symfony\Component\HttpFoundation\Response $httpResponse */
+    $httpResponse = $postBinding->send($messageContext);
+    print $httpResponse->getContent();
+} catch (\Exception $e) {
+    echo 'Caught exception: ', $e->getMessage(), "\n";
+}
+
