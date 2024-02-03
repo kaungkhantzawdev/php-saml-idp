@@ -41,9 +41,11 @@ class IdpTools{
 
 
     $acsUrl = $idpProvider->getServiceProviderAcs($issuer);
-
+    echo "<pre>";
     // Preparing the response XML
       $serializationContext = new \LightSaml\Model\Context\SerializationContext();
+      echo "serialization <br>";
+      var_dump($serializationContext);
 
       // We now start constructing the SAML Response using LightSAML.
       $response = new \LightSaml\Model\Protocol\Response();
@@ -123,7 +125,7 @@ class IdpTools{
 
     // Set the postback url obtained from the trusted SPs as the destination.
     $response->setDestination($acsUrl);
-
-      return $response;
+    var_dump($response); die();
+    return $response;
   }
 }
